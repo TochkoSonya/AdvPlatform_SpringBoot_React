@@ -29,10 +29,6 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
 
     Page<Announcement> findByUser(User user, Pageable pageable);
 
-    List<Announcement> findByType(AnnouncementType type);
-
-    List<Announcement> findByTypeAndUser(AnnouncementType type, User user);
-
     Page<Announcement> findByTypeAndUser(AnnouncementType type, User user, Pageable pageable);
 
     Page<Announcement> findByTypeAndUserAndStatus(AnnouncementType type, User user, AnnouncementStatus status, Pageable pageable);

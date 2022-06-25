@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -28,12 +27,13 @@ class AnnouncementServiceTests {
 
     private static final String USERNAME = "testUser";
 
-    @InjectMocks
-    private AnnouncementServiceImpl announcementService;
     @Mock
     private AnnouncementRepository announcementRepository;
     @Mock
     private UserServiceImpl userServiceImpl;
+
+    @InjectMocks
+    private AnnouncementServiceImpl announcementService;
 
     @Captor
     private ArgumentCaptor<AnnouncementType> typeCaptor;
