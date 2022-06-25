@@ -1,0 +1,55 @@
+version: "3.7"
+services:
+  api_service:
+    container_name: advertising_platform
+    image: advertising_platform
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db-postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  db-postgres:
+    container_name: postgres_container
+    image: "postgres:latest"
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: 1
+
+
+
+#version: "3.7"
+#services:
+#  app:
+#    image: advertising_platform_image
+#    build:
+#      context: .
+#    container_name: advertising_platform_container
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - db-postgres
+#
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/postgres
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=1
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#
+#  db-postgres:
+#    image: "postgres:latest"
+#    container_name: db-postgres
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=1
+
